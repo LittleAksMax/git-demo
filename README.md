@@ -2,10 +2,9 @@
 
 This is a short demo on using git!
 Keep in mind that you should have a terminal open.
-I will show commands in this format:
+I will show terminal commands in this format:
 > $ command<br>> output
 
-are done in the terminal.
 If you don't have git installed simply run
 > $ sudo apt install git
 
