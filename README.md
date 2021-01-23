@@ -39,6 +39,7 @@ You will get a public key (labelled with .pub extension) and a private key (with
 ### Add key to Github keys
 Next, use the cat command to copy the contents of the public key into the terminal
 > $ cat home/<user>/.ssh/id_rsa.pub
+
 Now copy all of the contents of the file (keep in mind that Ctrl+C and Ctrl+V don't do what you think they do in a shell). I suggest you use Ctrl+Shift+C and Ctrl+Shift+V in the terminal, or even just right-click on the selected text and select 'Copy' to be safe.
 
 Now go to your Github, click on your account in the top-right, and select 'Settings', on the tab on the left side of the screen, select 'SSH and GPG keys' and click on 'New Key' (make sure you are adding an SSH key). Simply paste the public key into the box.
@@ -49,7 +50,7 @@ The point of this is that the public key was generated with the private key, so 
 
 First, start the ssh-agent in the background
 > $ eval "$(ssh-agent -s)"
-> Agent pid <pid>
+    Agent pid <number>
 
 If you're using macOS Sierra 10.12.2 or later, you will need to modify your ~/.ssh/config file to automatically load keys into the ssh-agent and store passphrases in your keychain.
 
