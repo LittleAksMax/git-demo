@@ -74,4 +74,4 @@ Next, go to your project and click on the green 'Code' button, and select SSH, a
 Next, execute this command
 > $ git clone git@repo_domain
 
-The files in your repo will magically appear. Now you can change directory to the repo directory using the *cd* command.
+The files in your repo will magically appear. Now you can change directory to the repo directory using the *cd* command. You will now see some sort of indication that you are in a git repository from your terminal prompt.
