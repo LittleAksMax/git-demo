@@ -2,7 +2,8 @@
 
 This is a short demo on using git!
 Keep in mind that you should have a terminal open, commands in this format:
-> $ command\n
+> $ command
+
 > output
 
 are done in the terminal.
