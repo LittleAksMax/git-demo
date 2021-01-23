@@ -1,12 +1,18 @@
 # git-demo
 
 This is a short demo on using git!
+Keep in mind that you should have a terminal open, commands in this format:
+> command
+are done in the terminal.
 
 ## Step 1. Creating your account
 This step is very simple, simply go to github.com and click on the 'Sign Up' button.
 If you already have an account then you can simply sign in
 
 ## Step 2. Creating an empty Github repo
+
+##### NOTE: I DON'T ALWAYS REMEMBER EXACTLY WHAT EACH BUTTON SAYS, BUT YOU CAN GO OFF THE GIST OF WHAT I WRITE IN QUOTES
+
 In the top right, click on that '+' icon and select 'New repository', give it a name (like git-demo), and leave the rest of the options untouched, as this is simply a demo, not an actual project
 
 Instantly click on the 'creating a new file' and call it 'README.md'
@@ -19,10 +25,19 @@ Now, click on the green button that says 'Commit changes' and you will be brough
 
 ## Step 3. Getting and saving the SSH keys
 
-#### NOTE: THIS ONLY NEEDS TO BE DONE ONCE, BUT YOU CAN MAKE SEPARATE KEYS FOR EACH REPO
+##### NOTE: THIS ONLY NEEDS TO BE DONE ONCE, BUT YOU CAN MAKE SEPARATE KEYS FOR EACH REPO
 
-#### Generate key, rsa is the type, 4096 is the strength, the email is the email 
+### Generate key, rsa is the type, 4096 is the strength, the email is the email 
 > ssh-keygen -t rsa -b 4096 -C "e.mail@example.com"
 
 Upon being prompted, save the keys in the default file path given (usually something like 'home/<user>/.ssh/id_rsa')
-You will get a public key (labelled with .pub extension) and a private key (without an extension)
+You will get a public key (labelled with .pub extension) and a private key (without an extension).
+
+Next, use the cat command to copy the contents of the public key into the terminal
+> cat home/<user>/.ssh/id_rsa.pub
+  
+Now copy all of the contents of the file (keep in mind that Ctrl+C and Ctrl+V don't do what you think they do in a shell). I suggest you use Ctrl+Shift+C and Ctrl+Shift+V in the terminal, or even just right-click on the selected text and select 'Copy' to be safe.
+
+Now go to your Github, click on your account in the top-right, and select 'Settings', on the tab on the left side of the screen, select 'SSH and GPG keys' and click on 'New Key' (make sure you are adding an SSH key). Simply paste the public key into the box.
+
+The point of this is that the public key was generated with the private key, so by having the private key, you can prove that you are authorized to do what you are doing.
