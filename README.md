@@ -55,7 +55,9 @@ If you're using macOS Sierra 10.12.2 or later, you will need to modify your ~/.s
 
 ##### NOTE: YOUR KEY MAY NOT BE CALLED id_rsa, DEPENDING ON WHETHER YOU CHANGED IT OR NOT WHEN GENERATING
 
-{{{ Host *<br>AddKeysToAgent yes<br>UseKeychain yes<br>IdentityFile ~/.ssh/id_rsa }}}
+```
+Host *<br>  AddKeysToAgent yes<br>  UseKeychain yes<br> IdentityFile ~/.ssh/id_rsa
+```
 
 Last, add your SSH private key to the ssh-agent and store your passphrase in the keychain.
 > $ ssh-add -K ~/.ssh/id_rsa
