@@ -147,7 +147,7 @@ But let's make one more small change. Let's say I don't want to write out the 'o
 Now we only have to write *git push* and it will automatically push to origin.
 
 ### pull
-To start, create a file called pull.txt, and fill it with any text you want, make sure you commit.
+To start, create a file called pull.txt on the Github repository, and fill it with any text you want, make sure you commit.
 Now we want to sync our local workspace with the Github repository. To do so, we want to use the same link we just used for git clone, and simply put it after *git pull*.
 > $ git pull git@repo_domain
 
