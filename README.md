@@ -8,6 +8,9 @@ I will show terminal commands in this format:
 If you don't have git installed simply run
 > $ sudo apt install git
 
+##### NOTE: I HAVE CONFIGURED MY GITHUB TO NAME MY DEFAULT BRANCH MASTER, SINCE IN OCTOBER 2020 THE DEFAULT BRANCH WAS RENAMED TO MAIN, ALL REFERENCES I MAKE TO MASTER BRANCH ARE NOW CALLED MAIN BRANCH
+You can rename your default branch by clicking on your account in the top right, selecting settings, then on the tab on the left selecting 'Repositories'. Here you can also change what you want to call your default branch.
+
 ## Step 1. Creating your account
 This step is very simple, simply go to github.com and click on the 'Sign Up' button.
 If you already have an account then you can simply sign in
@@ -161,3 +164,30 @@ Now you should see that your workspace is synced with the online repo.
 To learn more about *git pull* check out the docs: https://git-scm.com/docs/git-pull
 
 ## Step 6. branching
+
+### Key ideas
+The master branch is the main branch in your project. Typically, the master branch contains fully functional and working code that is finished.
+But let's say that you want to work on something that may break your code. Well, in this case you want to create a branch to work on that specific feature. Changes made on that branch will not change anything that happens on the master branch, and vice versa. This is especially useful when your new feature will most likely break your code, and you don't want to mess up any work you already have done by attempting to implement the new feature directly into the project.
+
+First, let's see all the branches we have currently. To do this let's use the *git branch* command.
+> $ git branch
+
+Here you should see the master branch, the star indicates which branch you are currently on. To exit this view, press 'q' on your keyboard.
+
+### Creating checking out, and deleting branches
+To look at a branch, you use the *git checkout* command.
+> $ git checkout branch-name
+
+You should see an indication of having changed branches in your terminal (usually the master turns to the branch name).
+
+To create a new branch, we can do two things.
+Either we create and checkout separately:
+> $ git branch new-branch-name<br>$ git checkout new-branch-name
+
+or we can combine the two into one line:
+> $ git checkout -b new-branch-name
+
+The -b parameter tells git that a new branch needs to be created.
+
+Now let's say the implementation of the feature went horribly wrong and you no longer want to implement it into the program. No problem! We can just do this:
+> $ git branch -d branch-name
