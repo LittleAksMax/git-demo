@@ -170,7 +170,7 @@ To learn more about *git pull* check out the docs: https://git-scm.com/docs/git-
 
 ### Key ideas
 The master branch is the main branch in your project. Typically, the master branch contains fully functional and working code that is finished.
-But let's say that you want to work on something that may break your code. Well, in this case you want to create a branch to work on that specific feature. Changes made on that branch will not change anything that happens on the master branch, and vice versa. This is especially useful when your new feature will most likely break your code, and you don't want to mess up any work you already have done by attempting to implement the new feature directly into the project.
+So let's make a branch to work on a specific feature. Changes made on that branch will not change anything that happens on other branches, and vice versa. This is especially useful when your new feature will most likely break your code, and you don't want to mess up any work you already have done by attempting to implement the new feature directly into the project.
 
 First, let's see all the branches we have currently. To do this let's use the *git branch* command.
 > $ git branch
