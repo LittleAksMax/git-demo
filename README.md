@@ -2,8 +2,8 @@
 
 This is a short demo on using git!
 Keep in mind that you should have a terminal open, commands in this format:
-> command
-
+> $ command
+> output
 are done in the terminal.
 
 ## Step 1. Creating your account
@@ -29,22 +29,36 @@ Now, click on the green button that says 'Commit changes' and you will be brough
 ##### NOTE: THIS ONLY NEEDS TO BE DONE ONCE, BUT YOU CAN MAKE SEPARATE KEYS FOR EACH REPO
 
 ### Generate key, rsa is the type, 4096 is the strength, the email is the email 
-> ssh-keygen -t rsa -b 4096 -C "e.mail@example.com"
+> $ ssh-keygen -t rsa -b 4096 -C "e.mail@example.com"
 
 Upon being prompted, save the keys in the default file path given (usually something like 'home/<user>/.ssh/id_rsa')
 You will get a public key (labelled with .pub extension) and a private key (without an extension).
 
+### Add key to Github keys
 Next, use the cat command to copy the contents of the public key into the terminal
-> cat home/<user>/.ssh/id_rsa.pub
-  
+> $ cat home/<user>/.ssh/id_rsa.pub
 Now copy all of the contents of the file (keep in mind that Ctrl+C and Ctrl+V don't do what you think they do in a shell). I suggest you use Ctrl+Shift+C and Ctrl+Shift+V in the terminal, or even just right-click on the selected text and select 'Copy' to be safe.
 
 Now go to your Github, click on your account in the top-right, and select 'Settings', on the tab on the left side of the screen, select 'SSH and GPG keys' and click on 'New Key' (make sure you are adding an SSH key). Simply paste the public key into the box.
 
 The point of this is that the public key was generated with the private key, so by having the private key, you can prove that you are authorized to do what you are doing.
 
+### Add key to git identities
 
-> Host *
+First, start the ssh-agent in the background
+> $ eval "$(ssh-agent -s)"
+> Agent pid <pid>
+
+If you're using macOS Sierra 10.12.2 or later, you will need to modify your ~/.ssh/config file to automatically load keys into the ssh-agent and store passphrases in your keychain.
+
+##### NOTE: YOUR KEY MAY NOT BE CALLED id_rsa, DEPENDING ON WHETHER YOU CHANGED IT OR NOT WHEN GENERATING
+
+Host *
     AddKeysToAgent yes
     UseKeychain yes
     IdentityFile ~/.ssh/id_rsa 
+
+Last, add your SSH private key to the ssh-agent and store your passphrase in the keychain.
+> $ ssh-add -K ~/.ssh/id_rsa
+
+##### NOTE: -K OPTION IS APPLE'S STANDARD VERSION OF ssh-add, WHICH STORES THE PASSPHRASES IN YOUR KEYCHAIN FOR YOU WHEN YOU ADD AN SSH KEY TO THE ssh-agent. IF YOU GET AN ERROR, SIMPLY REMOVE THE PARAMETER AND TRY AGAIN. 
