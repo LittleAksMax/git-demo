@@ -1,7 +1,8 @@
 # git-demo
 
 This is a short demo on using git!
-Keep in mind that you should have a terminal open, commands in this format:
+Keep in mind that you should have a terminal open.
+I will show commands in this format:
 > $ command<br>> output
 
 are done in the terminal.
