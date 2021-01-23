@@ -5,6 +5,8 @@ Keep in mind that you should have a terminal open, commands in this format:
 > $ command<br>> output
 
 are done in the terminal.
+If you don't have git installed simply run
+> $ sudo apt install git
 
 ## Step 1. Creating your account
 This step is very simple, simply go to github.com and click on the 'Sign Up' button.
@@ -75,3 +77,80 @@ Next, execute this command
 > $ git clone git@repo_domain
 
 The files in your repo will magically appear. Now you can change directory to the repo directory using the *cd* command. You will now see some sort of indication that you are in a git repository from your terminal prompt.
+
+## Step 5. Learning the commands
+
+You should now be familiar with *git clone*. Let's get started with other commands.
+
+### add
+Let's get started by creating a file called file.txt (obviously this is applicable with other files).
+Your terminal should have some sort of indication that there have been changes made, and you are not synced with your Github repository (usually something like '✗').
+
+To add changed files you can do a few things.
+
+To apply all changes you can do
+> $ git add -A
+
+or 
+> $ git add .
+
+To only add file.txt
+> $ git add file.txt
+
+Or add all files that end in .txt
+> $ git add *.txt
+
+etc.
+
+To learn more about *git add* check out the docs: https://git-scm.com/docs/git-add
+
+### status
+To check all the different files, and their status run the command
+> $ git status
+
+You will see your files, they may be ready to be committed, or they haven't been added, etc.
+
+### commit
+Once all your files that you want to commit have been added, you should commit them.
+However, you have a commit message accompanying your commit.
+
+If you want a short message, you can simply do it like this:
+> $ git commit -m "commit message"
+
+However, if you want a more descriptive and complicated message, simply write:
+> $ git commit
+
+And you will be brought to a text editor where you can write your message.
+If you want to change the editor you want to write the message in, you can change your .gitconfig file, or:
+> $ git config --global core.editor "vim"
+
+where 'vim' is your editor of choice (and I do recommend vim for this). 
+
+To learn more about *git add* check out the docs: https://git-scm.com/docs/git-commit
+
+### push
+##### NOTE: YOU CAN ONLY PUSH IF YOUR LOCAL REPO IS SYNCED WITH THE ONLINE ONE
+Let's now that the files are committed, you can push them to your Github repository.
+
+Use the command
+> $ git push origin master
+
+As long as you cloned the repository, 'origin' will be set up by default, however, if you didn't clone and started from the local repo, you can simply add the origin of a repo.
+> $ git remote add origin git@repo_domain
+
+##### NOTE: YOU HAVE TO CREATE A GITHUB REPO TO REMOTELY CONNECT TO IT
+
+Now origin will be set up for you.
+But let's make one more small change. Let's say I don't want to write out the 'origin master' part every time I want to push; you can also set up the origin as the default place to push, to do this we upstream it
+> $ git push -u origin master
+
+Now we only have to write *git push* and it will automatically push to origin.
+
+### pull
+To start, create a file called pull.txt, and fill it with any text you want, make sure you commit.
+Now we want to sync our local workspace with the Github repository. To do so, we want to use the same link we just used for git clone, and simply put it after *git pull*.
+> $ git pull git@repo_domain
+
+Now you should see that your workspace is synced with the online repo.
+
+## Step 6. branching
