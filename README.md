@@ -35,7 +35,7 @@ Upon being prompted, save the keys in the default file path given (usually somet
 You will get a public key (labelled with .pub extension) and a private key (without an extension).
 
 ### Add key to Github keys
-Next, use the cat command to copy the contents of the public key into the terminal
+Next, use the *cat* command to copy the contents of the public key into the terminal
 > $ cat home/<user>/.ssh/id_rsa.pub
 
 Now copy all of the contents of the file (keep in mind that Ctrl+C and Ctrl+V don't do what you think they do in a shell). I suggest you use Ctrl+Shift+C and Ctrl+Shift+V in the terminal, or even just right-click on the selected text and select 'Copy' to be safe.
@@ -65,3 +65,13 @@ Last, add your SSH private key to the ssh-agent and store your passphrase in the
 > $ ssh-add -K ~/.ssh/id_rsa
 
 ##### NOTE: -K OPTION IS APPLE'S STANDARD VERSION OF ssh-add, WHICH STORES THE PASSPHRASES IN YOUR KEYCHAIN FOR YOU WHEN YOU ADD AN SSH KEY TO THE ssh-agent. IF YOU GET AN ERROR, SIMPLY REMOVE THE PARAMETER AND TRY AGAIN. 
+
+## Step 4. Cloning this repo down to your folder
+
+Navigate to the directory in which you want to store your project (i.e. if you want to store it in ~/Documents/<name_of_repo>/, navigate to ~/Documents/).
+
+Next, go to your project and click on the green 'Code' button, and select SSH, as this is what we just set up. Copy the link.
+Next, execute this command
+> $ git clone git@repo_domain
+
+The files in your repo will magically appear. Now you can change directory to the repo directory using the *cd* command.
