@@ -144,7 +144,7 @@ As long as you cloned the repository, 'origin' will be set up by default, howeve
 ##### NOTE: YOU HAVE TO CREATE A GITHUB REPO TO REMOTELY CONNECT TO IT
 
 Now origin will be set up for you.
-But let's make one more small change. Let's say I don't want to write out the 'origin master' part every time I want to push; you can also set up the origin as the default place to push, to do this we upstream it
+But let's make one more small change. Let's say I don't want to write out the 'origin master' part every time I want to push; you can also set up the origin as the default place to push, to do this we set the upstream
 > $ git push -u origin master
 
 Now we only have to write *git push* and it will automatically push to origin.
@@ -154,12 +154,15 @@ To learn more about *git push* check out the docs: https://git-scm.com/docs/git-
 ### pull
 To start, create a file called pull.txt on the Github repository, and fill it with any text you want, make sure you commit.
 Now we want to sync our local workspace with the Github repository. To do so, we want to use the same link we just used for git clone, and simply put it after *git pull*.
-> $ git pull git@repo_domain
+> $ git pull git@repo_domain master
 
 or
-> $ git pull origin
+> $ git pull origin master
 
 Now you should see that your workspace is synced with the online repo.
+
+You can also use the -u parameter to set the upstream for that branch, meaning you only have to write git pull from that branch from now on.
+> $ git pull -u origin master
 
 To learn more about *git pull* check out the docs: https://git-scm.com/docs/git-pull
 
@@ -174,20 +177,57 @@ First, let's see all the branches we have currently. To do this let's use the *g
 
 Here you should see the master branch, the star indicates which branch you are currently on. To exit this view, press 'q' on your keyboard.
 
+##### NOTE: ALL REFERENCES TO 'feature' ARE REFERENCING A BRANCH THAT WAS CREATED 
+
 ### Creating checking out, and deleting branches
 To look at a branch, you use the *git checkout* command.
-> $ git checkout branch-name
+> $ git checkout feature
 
 You should see an indication of having changed branches in your terminal (usually the master turns to the branch name).
 
 To create a new branch, we can do two things.
 Either we create and checkout separately:
-> $ git branch new-branch-name<br>$ git checkout new-branch-name
+> $ git branch new-branch-name<br>$ git checkout feature
 
 or we can combine the two into one line:
-> $ git checkout -b new-branch-name
+> $ git checkout -b feature
 
 The -b parameter tells git that a new branch needs to be created.
 
-Now let's say the implementation of the feature went horribly wrong and you no longer want to implement it into the program. No problem! We can just do this:
-> $ git branch -d branch-name
+Now let's say the new feature has been created and works, and we have merged the branch we were developing it on with the master branch. We no longer need that branch, and so we can just delete it. We can just do this:
+> $ git branch -d feature
+
+### Merging branches, pull requests, and the diff command
+
+Let's say we have finished writing our feature, and we want to merge it with the master branch.
+
+But before that, we want to see the changes between the two branches (i.e. what was changed on the feature branch), we can do this by using the *git diff* command:
+> $ git diff feature
+
+Press 'q' to exit the view.
+Great! Now that we see the changes made, and we are fine with the result, we can merge the two branches.
+Before we do that, however, we should push our committed changes on the feature branch to our Github repo. But this time, instead of master, we want to push it to the branch's name:
+> $ git checkout feature<br>$ git push -u origin feature
+
+Again, when we push on this branch, it will automatically now push to that branch in the online repository.
+
+Now we need to make a pull request.
+A pull request is a request to have the changes made on one branch, pulled into another branch; in this case, we want to pull the changes from the feature branch, to the master branch.
+
+##### NOTE: GENERALLY PEOPLE MAKE CHANGES/ADD FEATURES IN DIFFERENT BRANCHES THAN MAKE A PULL REQUEST TO MERGE WITH THE MASTER BRANCH
+
+Now we can go to Github, and it has picked up on our pull request. Click on the green button 'Compare & pull request'.
+Now you can add to the description box, usually the whats and whys of your changes. After you are done, you can press the 'Create pull request' button.
+Once we have made a pull request anyone can review the changes, make comments to them and tell you to make changes.
+If people make comments, you may have to resolve conversations (i.e. reply to their comments) before you can merge, depending on your permissions.
+
+You can now click on the green button saying 'Merge pull request', and confirm!
+You can also use the *git merge* command:
+> $ git checkout master<br>$ git merge feature
+
+If you go to the code tab, and select to the master branch, you will see the changes have been made. However, the changes are not on your local repository, to get the changes locally, you need to execute a *git pull*.
+
+### Merge collisions
+In real life you are not always going to have such an easy time merging, sometimes there are merge collisions. Since in a real project there are multiple people working on the same project, there are situations when the same files get changed, and git has a hard time deciding which changes should go through. You always have to resolve these issues manually. 
+
+@49:05
