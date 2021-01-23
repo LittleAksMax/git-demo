@@ -52,8 +52,7 @@ First, start the ssh-agent in the background
 ##### NOTE: number is probably going to be something other than 59666
 
 If you're using macOS Sierra 10.12.2 or later, you will need to modify your ~/.ssh/config file to automatically load keys into the ssh-agent and store passphrases in your keychain.
-
-##### NOTE: YOUR KEY MAY NOT BE CALLED id_rsa, DEPENDING ON WHETHER YOU CHANGED IT OR NOT WHEN GENERATING
+Keep in mind that your key may not be called id_rsa, but what you named it during generation.
 
 ```
 Host *
