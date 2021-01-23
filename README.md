@@ -47,7 +47,9 @@ The point of this is that the public key was generated with the private key, so 
 ### Add key to git identities
 
 First, start the ssh-agent in the background
-> $ eval "$(ssh-agent -s)"<br>> Agent pid <number>
+> $ eval "$(ssh-agent -s)"<br>> Agent pid 59666
+
+##### NOTE: number is probably going to be something other than 59666
 
 If you're using macOS Sierra 10.12.2 or later, you will need to modify your ~/.ssh/config file to automatically load keys into the ssh-agent and store passphrases in your keychain.
 
