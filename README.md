@@ -3,6 +3,7 @@
 This is a short demo on using git!
 Keep in mind that you should have a terminal open, commands in this format:
 > command
+
 are done in the terminal.
 
 ## Step 1. Creating your account
