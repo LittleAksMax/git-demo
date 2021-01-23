@@ -154,6 +154,9 @@ To start, create a file called pull.txt on the Github repository, and fill it wi
 Now we want to sync our local workspace with the Github repository. To do so, we want to use the same link we just used for git clone, and simply put it after *git pull*.
 > $ git pull git@repo_domain
 
+or
+> $ git pull origin
+
 Now you should see that your workspace is synced with the online repo.
 
 To learn more about *git pull* check out the docs: https://git-scm.com/docs/git-pull
