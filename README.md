@@ -2,8 +2,9 @@
 
 This is a short demo on using git!
 Keep in mind that you should have a terminal open, commands in this format:
-> $ command
+> $ command\n
 > output
+
 are done in the terminal.
 
 ## Step 1. Creating your account
