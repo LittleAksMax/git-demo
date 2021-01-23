@@ -42,3 +42,9 @@ Now copy all of the contents of the file (keep in mind that Ctrl+C and Ctrl+V do
 Now go to your Github, click on your account in the top-right, and select 'Settings', on the tab on the left side of the screen, select 'SSH and GPG keys' and click on 'New Key' (make sure you are adding an SSH key). Simply paste the public key into the box.
 
 The point of this is that the public key was generated with the private key, so by having the private key, you can prove that you are authorized to do what you are doing.
+
+
+> Host *
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/id_rsa 
