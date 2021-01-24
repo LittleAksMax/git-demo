@@ -1,4 +1,4 @@
 This file was added first.
-git add -a
+git add -A or .
 git commit -m "file.txt added"
 git push origin master
