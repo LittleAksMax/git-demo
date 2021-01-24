@@ -262,7 +262,36 @@ All you have to do is delete the lines git added, and correct the code. Now we w
 Now the two branches will be synced, and you can continue working on whatever you were working on in the branch we just merged with master.
 
 ## Undoing
+Let's say you staged a file that you didn't mean to (with *git add*). Well you can unstage it very easily with the *git reset* command.
+> $ git reset
+
+resets all the staged files, and
+> $ git reset filename
+
+only resets that file.
+
+But what if you want to undo a commit. If you made a mistake on that commit, you can go back 1 commit by using the *git reset* command again:
+> $ git reset HEAD~1
+
+Now, what does this mean? HEAD is the pointer to the last commit you made, the ~1 tells git that you want to reset to the commit 1 before the current commit, you can also go back more than 1 by using a different number:
+> $ git reset HEAD~2
+
+If you now do a *git status* you'll see that all the changes made after that commit are now unstaged.
+
+However, you may want to reset back to a specific commit, and you may not know which one it is.
+You can use the *git log* command to list all the commits in reverse chronological order (newest -> oldest).
+> $ git log
+
+It also tells you the time of the commit, and the message. This is why it is important to write good commit messages.
+You can scroll down with <Space>, and exit with 'q', like always.
+It also shows the commit hash, which you can copy and use as the argument for the *git reset* command:
+> $ git reset cd080d12dcebe3b48b174c61111938...
+
+##### NOTE: THESE HASHES ARE REALLY LONG.
+
+If you don't only want to unstage the changes, but also completely remove them, you can use the --hard parameter.
+> $ git reset --hard cd080d12dcebe3b48b174c61111938...
+
+Now if you look at the changed file, you will see it is completely reverted to it's state at the time.
 
 ## Forking
-
-## Stashing
