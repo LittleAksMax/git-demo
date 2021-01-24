@@ -129,6 +129,11 @@ If you want to change the editor you want to write the message in, you can chang
 
 where 'vim' is your editor of choice (and I do recommend vim for this). 
 
+Keep in mind that if you have only modified files (no deletions/creations) you can skip the *git add* step entirely, and go for a commit straight up:
+> $ git commit -am "commit message"
+
+The -a parameter tells git to add all modified files.
+
 To learn more about *git add* check out the docs: https://git-scm.com/docs/git-commit
 
 ### push
@@ -227,7 +232,37 @@ You can also use the *git merge* command:
 
 If you go to the code tab, and select to the master branch, you will see the changes have been made. However, the changes are not on your local repository, to get the changes locally, you need to execute a *git pull*.
 
-### Merge collisions
-In real life you are not always going to have such an easy time merging, sometimes there are merge collisions. Since in a real project there are multiple people working on the same project, there are situations when the same files get changed, and git has a hard time deciding which changes should go through. You always have to resolve these issues manually. 
+Remember that usually people usually merge with master manually, but you want to pull changes from master as often as changes are made to master, so you aren't that far behind, every now and then, you want to:
+> $ git merge master
 
-@49:05
+from your branch.
+
+### Merge collisions
+Unfortunately you are not always going to have such an easy time merging, sometimes there are merge collisions. Since in a real project there are multiple people working on the same project, there are situations when the same files get changed, and git has a hard time deciding which changes should go through. You always have to resolve these issues manually. 
+
+To see how to deal with this create a file called coll.txt, and add some text to it. Create a branch from there called collision-test, and on the second line of that file write some more text (and commit). Now *git checkout* master, and change the second line of that file again, (and commit).
+
+Now if we go back to that branch and merge master:
+> $ git merge master
+
+We will get output saying that the merge failed, and there are conflicts that need to be fixed in file.txt.
+Now if we go to file.txt, we will see something like this at the changed code.
+```
+<<<<<<<< HEAD
+text changed in branch
+========
+text changed in master
+>>>>>>>> master
+```
+These additions tell git that there is a collision.
+Some code editors will be more advanced than others and will give you options to keep one change, keep the other, or keep both.
+All you have to do is delete the lines git added, and correct the code. Now we will need to make another commit.
+> $ git commit -am "fixed merge collision and merged with master"
+
+Now the two branches will be synced, and you can continue working on whatever you were working on in the branch we just merged with master.
+
+## Undoing
+
+## Forking
+
+## Stashing
