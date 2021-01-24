@@ -171,6 +171,49 @@ You can also use the -u parameter to set the upstream for that branch, meaning y
 
 To learn more about *git pull* check out the docs: https://git-scm.com/docs/git-pull
 
+### stash
+Stash is used when you are not quite ready to commit, but don't want your changes to disappear. A good example of this is when you want to switch branches for a second - if you have tried to switch branches without committing before, you will see that it tells you to 'git stash or commit'.
+
+To save changes, you can do this:
+> $ git stash save "What I'm saving"
+
+If you go back to your file, you will see that what you were working on is now gone, but not wiped out.
+You can see all your stashed work by using the *git stash list* command
+> $ git stash list<br>> stash@{0}: On branch: What I'm saving
+
+The number is the index of what you are saving, you can also see the branch, and the message you gave the stash as a reminder of what it is.
+
+Whenever you are ready to come back to the changes we made, we can:
+> $ git stash apply stash@{0}
+
+If you go back to your file you will see that the changes made are now there again.
+However if you do another *git stash list* you will see that the stash wasn't removed.
+
+If you want to remove it as well, you can use the *git stash pop* command:
+> $ git stash pop
+
+This will remove the top stash, and also apply the changes on it.
+
+If you want to remove a stash, you can use the *git stash drop* command
+> $ git stash list
+
+I can see that I want to drop stash@{3} (for example).
+Now I want to drop it:
+> $ git stash drop stash@{3}
+
+If you list again, you will see that it is no longer there.
+
+You can also remove all stashes, by doing a *git stash clear*:
+> $ git stash clear
+
+Now if you run a *git stash list* you will see that there are no more stashes.
+
+##### NOTE: YOU SHOULD BE CAREFUL WHEN CLEARING STASH, BECAUSE ONCE THEY ARE DELETED, YOU ARE NOT GETTING THEM BACK
+
+Another situation you can be in, is you edited in the wrong branch, in this case, you can stash, and since stashes carry over branches, you can apply those stashed changes in the branch you were meant to make the changes in, and all is fine and dandy!
+
+To learn more about *git stash* check out the docs: https://git-scm.com/docs/git-stash
+
 ## Step 6. branching
 
 ### Key ideas
@@ -293,5 +336,3 @@ If you don't only want to unstage the changes, but also completely remove them, 
 > $ git reset --hard cd080d12dcebe3b48b174c61111938...
 
 Now if you look at the changed file, you will see it is completely reverted to it's state at the time.
-
-## Forking
