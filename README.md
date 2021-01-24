@@ -273,7 +273,7 @@ only resets that file.
 But what if you want to undo a commit. If you made a mistake on that commit, you can go back 1 commit by using the *git reset* command again:
 > $ git reset HEAD~1
 
-Now, what does this mean? HEAD is the pointer to the last commit you made, the ~1 tells git that you want to reset to the commit 1 before the current commit, you can also go back more than 1 by using a different number:
+Now, what does this mean? *HEAD* is the pointer to the last commit you made, the *~1* tells git that you want to reset to the commit 1 before the current commit, you can also go back more than 1 by using a different number:
 > $ git reset HEAD~2
 
 If you now do a *git status* you'll see that all the changes made after that commit are now unstaged.
@@ -289,7 +289,7 @@ It also shows the commit hash, which you can copy and use as the argument for th
 
 ##### NOTE: THESE HASHES ARE REALLY LONG.
 
-If you don't only want to unstage the changes, but also completely remove them, you can use the --hard parameter.
+If you don't only want to unstage the changes, but also completely remove them, you can use the *--hard* parameter.
 > $ git reset --hard cd080d12dcebe3b48b174c61111938...
 
 Now if you look at the changed file, you will see it is completely reverted to it's state at the time.
