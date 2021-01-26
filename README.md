@@ -245,6 +245,11 @@ The -b parameter tells git that a new branch needs to be created.
 Now let's say the new feature has been created and works, and we have merged the branch we were developing it on with the master branch. We no longer need that branch, and so we can just delete it. We can just do this:
 > $ git branch -d feature
 
+##### NOTE: BE SURE TO SET UPSTREAM FOR EACH BRANCH
+> $ git branch -u origin/my_branch
+
+This will make everything easier to push and pull.
+
 ### Merging branches, pull requests, and the diff command
 
 Let's say we have finished writing our feature, and we want to merge it with the master branch.
